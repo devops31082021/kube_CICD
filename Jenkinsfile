@@ -10,6 +10,15 @@ pipeline {
                 """
             }
         }
+        
+        stage('Push docker image to  docker hub') {
+            steps {
+                sh """
+                docker login -u devops31082021 -p devops31082021
+                docker push devops31082021/nginx-test
+                """
+            }
+        }
         stage('Deploy nginx in kubernets') {
             steps {
                 sh 'kubectl apply -f . --kubeconfig /var/lib/jenkins/.kube/config'
