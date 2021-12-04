@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx
+        image: devops31082021/nginx-test
         ports:
         - containerPort: 80
 ---
