@@ -20,6 +20,11 @@ spec:
         image: devops31082021/nginx-test
         ports:
         - containerPort: 80
+      strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxUnavailable: 1
+          maxSurge: 1
 ---
 apiVersion: v1
 kind: Service
