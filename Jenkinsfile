@@ -23,7 +23,8 @@ pipeline {
             steps {
                 sh '''
                 kubectl delete deploy nginx --kubeconfig /var/lib/jenkins/.kube/config
-                kubectl apply -f . --kubeconfig /var/lib/jenkins/.kube/config
+                kubectl delete svc nginx --kubeconfig /var/lib/jenkins/.kube/config
+                
                 '''
             }
         }
