@@ -21,7 +21,10 @@ pipeline {
         }
         stage('Deploy nginx in kubernets') {
             steps {
-                sh 'kubectl apply -f . --kubeconfig /var/lib/jenkins/.kube/config'
+                sh '''
+                kubectl delete deploy nginx --kubeconfig /var/lib/jenkins/.kube/config
+                kubectl apply -f . --kubeconfig /var/lib/jenkins/.kube/config
+                '''
             }
         }
     }
